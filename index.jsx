@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 
 // Main comoponent (will eventually use all the others)
-class myFlixApplication extends React.Component {
+class MyFlixApplication extends React.Component {
     render() {
         return (
             <div className="my-flix">
@@ -16,7 +16,7 @@ class myFlixApplication extends React.Component {
 }
 
 // Finds the root of your app
-const container = document.getElementByClassName('app-container')[0];
+const container = document.getElementsByClassName('app-container')[0];
 
 //Tells React to render your app in the root DOM element
-ReactDOM.render(React.createElement(myFlixApplication), container);
+ReactDOM.render(React.createElement(MyFlixApplication), container);
