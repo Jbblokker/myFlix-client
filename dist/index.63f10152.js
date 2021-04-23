@@ -26651,15 +26651,6 @@ try {
   var _reactDefault = _parcelHelpers.interopDefault(_react);
   var _jsxFileName = "C:\\Users\\HP\\documents\\careerfoundry\\myFlix-client\\components\\movie-view\\movie-view.jsx";
   class MovieView extends _reactDefault.default.Component {
-    keypressCallback(event) {
-      console.log(event.key);
-    }
-    componentDidMount() {
-      document.addEventListener('keypress', this.keypressCallback);
-    }
-    componentWillUnmount() {
-      document.removeEventListener('keypress', this.kepressCallback);
-    }
     render() {
       const {movie, onBackClick} = this.props;
       return (
@@ -26668,7 +26659,7 @@ try {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 22,
+            lineNumber: 10,
             columnNumber: 13
           }
         }, /*#__PURE__*/_reactDefault.default.createElement("div", {
@@ -26676,7 +26667,7 @@ try {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 23,
+            lineNumber: 11,
             columnNumber: 17
           }
         }, /*#__PURE__*/_reactDefault.default.createElement("img", {
@@ -26684,7 +26675,7 @@ try {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 24,
+            lineNumber: 12,
             columnNumber: 21
           }
         })), /*#__PURE__*/_reactDefault.default.createElement("div", {
@@ -26692,7 +26683,7 @@ try {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 26,
+            lineNumber: 14,
             columnNumber: 17
           }
         }, /*#__PURE__*/_reactDefault.default.createElement("span", {
@@ -26700,7 +26691,7 @@ try {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 27,
+            lineNumber: 15,
             columnNumber: 21
           }
         }, "Title:"), /*#__PURE__*/_reactDefault.default.createElement("span", {
@@ -26708,7 +26699,7 @@ try {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 28,
+            lineNumber: 16,
             columnNumber: 21
           }
         }, movie.Title)), /*#__PURE__*/_reactDefault.default.createElement("div", {
@@ -26716,7 +26707,7 @@ try {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 30,
+            lineNumber: 18,
             columnNumber: 17
           }
         }, /*#__PURE__*/_reactDefault.default.createElement("span", {
@@ -26724,7 +26715,7 @@ try {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 31,
+            lineNumber: 19,
             columnNumber: 21
           }
         }, "Description"), /*#__PURE__*/_reactDefault.default.createElement("span", {
@@ -26732,7 +26723,7 @@ try {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 32,
+            lineNumber: 20,
             columnNumber: 21
           }
         }, movie.Description)), /*#__PURE__*/_reactDefault.default.createElement("button", {
@@ -26742,7 +26733,7 @@ try {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 34,
+            lineNumber: 22,
             columnNumber: 17
           }
         }, "Back"))
