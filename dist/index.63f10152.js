@@ -26488,7 +26488,6 @@ try {
   var _reactDefault = _parcelHelpers.interopDefault(_react);
   var _axios = require('axios');
   var _axiosDefault = _parcelHelpers.interopDefault(_axios);
-  var _loginViewLoginView = require('./login-view/login-view');
   var _movieCardMovieCard = require('./movie-card/movie-card');
   var _movieViewMovieView = require('./movie-view/movie-view');
   var _jsxFileName = "C:\\Users\\HP\\documents\\careerfoundry\\myFlix-client\\components\\main-view.jsx";
@@ -26497,9 +26496,23 @@ try {
       super();
       // Intial state is set to null
       this.state = {
-        movies: [],
-        selectedMovie: null,
-        user: null
+        movies: [{
+          _id: 1,
+          Title: 'Inception',
+          Description: 'desc1...',
+          ImagePath: '...'
+        }, {
+          _id: 2,
+          Title: 'The Shawshank Redemption',
+          Description: 'desc2...',
+          ImagePath: '...'
+        }, {
+          _id: 3,
+          Title: 'Gladiator',
+          Description: 'desc3...',
+          ImagePath: '...'
+        }],
+        selectedMovie: null
       };
     }
     componentDidMount() {
@@ -26519,27 +26532,17 @@ try {
       });
     }
     /*When a user successfully logs in, this function updates the `user` por
-    erty in state to the *particual user*/
-    onLoggedIn(user) {
-      this.setState({
-        user
-      });
-    }
+    entry in state to the *particual user*/
+    /*// onLoggedIn(user) {*/
+    /*this.setState({*/
+    /*user*/
+    /*});*/
+    /*}*/
     render() {
       const {movies, selectedMovie} = this.state;
       /*If there is no user, the LoginView is rendered. If there is a user logged in, the user
       details are *passed as a prop to the LoginView*/
-      if (!user) return (
-        /*#__PURE__*/_reactDefault.default.createElement(_loginViewLoginView.LoginView, {
-          onLoggedIn: user => this.onLoggedIn(user),
-          __self: this,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 55,
-            columnNumber: 27
-          }
-        })
-      );
+      // if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
       // before the movie have been loaded
       if (movies.length === 0) return (
         /*#__PURE__*/_reactDefault.default.createElement("div", {
@@ -26547,7 +26550,7 @@ try {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 58,
+            lineNumber: 60,
             columnNumber: 41
           }
         })
@@ -26558,7 +26561,7 @@ try {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 61,
+            lineNumber: 63,
             columnNumber: 13
           }
         }, /*#__PURE__*/_reactDefault.default.createElement("button", {
@@ -26568,7 +26571,7 @@ try {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 62,
+            lineNumber: 64,
             columnNumber: 17
           }
         }, "Click me!"), selectedMovie ? /*#__PURE__*/_reactDefault.default.createElement(_movieViewMovieView.MovieView, {
@@ -26579,7 +26582,7 @@ try {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 64,
+            lineNumber: 66,
             columnNumber: 11
           }
         }) : movies.map(movie => /*#__PURE__*/_reactDefault.default.createElement(_movieCardMovieCard.MovieCard, {
@@ -26591,8 +26594,8 @@ try {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 66,
-            columnNumber: 11
+            lineNumber: 68,
+            columnNumber: 10
           }
         })))
       );
@@ -26605,7 +26608,7 @@ try {
   window.$RefreshSig$ = prevRefreshSig;
 }
 
-},{"react":"3b2NM","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f","./movie-card/movie-card":"3tqlb","./movie-view/movie-view":"3AlPe","axios":"7rA65","./login-view/login-view":"6zudI"}],"3tqlb":[function(require,module,exports) {
+},{"react":"3b2NM","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f","./movie-card/movie-card":"3tqlb","./movie-view/movie-view":"3AlPe","axios":"7rA65"}],"3tqlb":[function(require,module,exports) {
 var helpers = require("../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -26639,7 +26642,7 @@ try {
     }
   }
   // check my mongo db to find all catagories we need to match. Left for reference
-  Moviecard.propTypes = {
+  MovieCard.propTypes = {
     movie: _propTypesDefault.default.shape({
       Title: _propTypesDefault.default.string.isRequired,
       Description: _propTypesDefault.default.string.isRequired,
@@ -29318,95 +29321,6 @@ module.exports = function isAxiosError(payload) {
   return (typeof payload === 'object') && (payload.isAxiosError === true);
 };
 
-},{}],"6zudI":[function(require,module,exports) {
-var helpers = require("../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-helpers.prelude(module);
-try {
-  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
-  _parcelHelpers.defineInteropFlag(exports);
-  _parcelHelpers.export(exports, "LoginView", function () {
-    return LoginView;
-  });
-  var _react = require('react');
-  var _reactDefault = _parcelHelpers.interopDefault(_react);
-  var _jsxFileName = "C:\\Users\\HP\\documents\\careerfoundry\\myFlix-client\\components\\login-view\\login-view.jsx", _s = $RefreshSig$();
-  function LoginView(props) {
-    _s();
-    const [username, setUsername] = _react.useState('');
-    const [password, setPassword] = _react.useState('');
-    const handleSubmit = e => {
-      e.preventDefault();
-      console.log(username, password);
-      // Send a request to the server for authentication
-      // then call props.onLoggedIn(username)
-      props.onLoggedIn(username);
-    };
-    return (
-      /*#__PURE__*/_reactDefault.default.createElement("form", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 16,
-          columnNumber: 9
-        }
-      }, /*#__PURE__*/_reactDefault.default.createElement("label", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 17,
-          columnNumber: 13
-        }
-      }, "Username:", /*#__PURE__*/_reactDefault.default.createElement("input", {
-        type: "text",
-        value: username,
-        onChange: e => setUsername(e.target.value),
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 19,
-          columnNumber: 17
-        }
-      })), /*#__PURE__*/_reactDefault.default.createElement("label", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 22,
-          columnNumber: 13
-        }
-      }, "Password:", /*#__PURE__*/_reactDefault.default.createElement("input", {
-        type: "password",
-        value: password,
-        onChange: e => setPassword(e.target.value),
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 24,
-          columnNumber: 17
-        }
-      })), /*#__PURE__*/_reactDefault.default.createElement("button", {
-        type: "submit",
-        onClick: handleSubmit,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 27,
-          columnNumber: 13
-        }
-      }, "Submit"))
-    );
-  }
-  _s(LoginView, "OwO8ajoGYCTQS1DVLQlpF62a7z4=");
-  _c = LoginView;
-  var _c;
-  $RefreshReg$(_c, "LoginView");
-  helpers.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-
-},{"react":"3b2NM","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4Jj4f"}]},["1j6wU","3L2qK","5Qvcc"], "5Qvcc", "parcelRequire279c")
+},{}]},["1j6wU","3L2qK","5Qvcc"], "5Qvcc", "parcelRequire279c")
 
 //# sourceMappingURL=index.63f10152.js.map
