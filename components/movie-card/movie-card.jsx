@@ -12,7 +12,7 @@ export class MovieCard extends React.Component {
     }
 }
 //check my mongo db to find all catagories we need to match. Left for reference
-Moviecard.propTypes = {
+MovieCard.propTypes = {
     movie: PropTypes.shape({
         Title: PropTypes.string.isRequired,
         Description: PropTypes.string.isRequired,
