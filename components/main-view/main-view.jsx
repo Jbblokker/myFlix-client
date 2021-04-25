@@ -38,7 +38,7 @@ export class MainView extends React.Component {
         });
     }
 
-    /* When a user successfully logs in, this function updates the `user` por
+    /* When a user successfully logs in, this function updates the `user` for
     entry in state to the *particual user*/
 
     onLoggedIn(user) {
