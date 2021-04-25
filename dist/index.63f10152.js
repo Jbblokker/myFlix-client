@@ -26518,7 +26518,7 @@ try {
         selectedMovie: movie
       });
     }
-    /*When a user successfully logs in, this function updates the `user` por
+    /*When a user successfully logs in, this function updates the `user` for
     entry in state to the *particual user*/
     onLoggedIn(user) {
       this.setState({
@@ -28356,8 +28356,8 @@ try {
   var _jsxFileName = "C:\\Users\\HP\\documents\\careerfoundry\\myFlix-client\\components\\login-view\\login-view.jsx", _s = $RefreshSig$();
   function LoginView(props) {
     _s();
-    const [username, setUsername] = _react.useState('');
-    const [password, setPassword] = _react.useState('');
+    const [Username, setUsername] = _react.useState('');
+    const [Password, setPassword] = _react.useState('');
     const handleSubmit = e => {
       e.preventDefault();
       console.log(username, password);
@@ -28419,7 +28419,7 @@ try {
       }, "Submit"))
     );
   }
-  _s(LoginView, "OwO8ajoGYCTQS1DVLQlpF62a7z4=");
+  _s(LoginView, "RKzrcBSXw7W6yHq7ro9AtP2Nen8=");
   _c = LoginView;
   var _c;
   $RefreshReg$(_c, "LoginView");
