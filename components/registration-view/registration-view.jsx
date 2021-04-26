@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default function RegistrationView(props) {
-    const [ Username, setUsername ] = useState('');
-    const [ Password, setPassword ] = useState('');
-    const [ Email, setEmail ] = useState('');
-    const [ Birthday, setBirthday] = useState('');
+    const [ username, setUsername ] = useState('');
+    const [ password, setPassword ] = useState('');
+    const [ email, setEmail ] = useState('');
+    const [ birthday, setBirthday] = useState('');
 
     const onSubmit = (e) => {
         e.preventDefault();
