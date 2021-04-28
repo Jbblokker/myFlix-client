@@ -4,7 +4,8 @@ import axios from 'axios';
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
-
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 export class MainView extends React.Component {
 
     constructor() {
