@@ -51,6 +51,21 @@ export class MainView extends React.Component {
         localStorage.setItem('token', authData.token);
         localStorage.setItem('user', authData.user.Usermane);
         this.getMovies(authData.token);
+    
+    }
+    getMovies(token) {
+        axios.get('https://sleepy-crag-80436.herokuapp.com/movies', {
+            headers: { Authorization: `Bearer ${token}`}
+        })
+        .then(response => {
+            //assign the reslt to the state
+            this.setState({
+                movies: response.data
+            });
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
     }
 
     render(){
