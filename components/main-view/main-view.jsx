@@ -1,11 +1,16 @@
 import React from 'react';
 import axios from 'axios';
 
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
+import { RegistrationView } from '../registration-view/registration-view';
+
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+
 export class MainView extends React.Component {
 
     constructor() {
