@@ -35,6 +35,16 @@ export class MainView extends React.Component {
         });
     }
 
+
+    componentDidMount() {
+        let accessToken = localStorage.getItem('token');
+        if (accessToken !== null) {
+            this.setState({
+                user: localStorage.getItem ('user')
+            });
+            this.getMovies(accessToken);
+        }
+    }
     /*when a movie is clicked, this function is invoked and updates the state
     of the `selectedMovie` *property to that movie*/
 
