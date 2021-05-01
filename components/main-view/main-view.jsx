@@ -48,11 +48,11 @@ export class MainView extends React.Component {
     entry in state to the *particual user*/
 
     onLoggedIn(authData) {
-        console.log(authData); {
+        console.log(authData); 
             this.setState({
                 user: authData.user.Username
         });
-
+            
         localStorage.setItem('token', authData.token);
         localStorage.setItem('user', authData.user.Usermane);
         this.getMovies(authData.token);
