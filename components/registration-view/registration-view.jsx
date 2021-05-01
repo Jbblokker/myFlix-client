@@ -12,7 +12,24 @@ export default function RegistrationView(props) {
         console.log(username, password, email, birthday);
         props.onRegister(username); 
     }
+    
+    axios.post('https://sleepy-crag-80436.herokuapp.com/users', {
+      Username: username,
+      Password: password,
+      Email: email,
+      Birthday: birthday
+    })
+    .then(response => {
+      const data = response.data;
+      console.log(data);
+      window.open('/', '_self');// the second argument '_self' is necessary so that the page 
+      //will open in a current tab
+    })
+    .catch(e => {
+      console.log('error registering the user')
+    });
 
+      
     
         return(
             <Container>
