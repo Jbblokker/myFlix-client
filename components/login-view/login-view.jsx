@@ -4,8 +4,8 @@ import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 
 export function LoginView(props) {
-    const [Username, setUsername ] = useState('');
-    const [Password, setPassword ] = useState('');
+    const [username, setUsername ] = useState('');
+    const [password, setPassword ] = useState('');
  
     const handleSubmit = (e) => {
         e.preventDefault();
