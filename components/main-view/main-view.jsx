@@ -58,7 +58,15 @@ export class MainView extends React.Component {
         this.getMovies(authData.token);
     
     }
-    getMovies(token) {
+    onLoggedOut() {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        this.setState({
+            user:null
+        });
+    }
+
+    getMovies(token){
         axios.get('https://sleepy-crag-80436.herokuapp.com/movies', {
             headers: { Authorization: `Bearer ${token}`}
         })
