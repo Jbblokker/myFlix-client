@@ -83,30 +83,54 @@ export class MainView extends React.Component {
 
     render(){
         const { movies, selectedMovie, user } = this.state;
+       // <button onClick={() { this.onLoggedOut() }}>Lougout</button>
 
         /* If there is no user, the LoginView is rendered. If there is a user logged in, the user
         details are *passed as a prop to the LoginView*/
-       if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
-
+      
         //before the movie have been loaded
-        if (movies.length === 0) return <div className="main-view"/>;
+       if (movies.length === 0) return <div className="main-view"/>;
 
         return(
-          <Row className="main-view justify-content-md-center">
-            {selectedMovie
-              ? (
-                 <Col md={8}>
-                   <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }}/>
-                 </Col>
-                )
-                : movies.map(movie => (
-                  <Col md={3}>
-                    <MovieCard key={movie._id} movie={movie} 
-         onMovieClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie) }}/>
+            <Router>
+            <Row className="main-view justify-content-md-center">
+              <Route exact path="/" render={() => {
+                  if (!user) return <Col>
+                  <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+                </Col>
+                return movies.map(m => (
+                  <Col md={3} key={m._id}>
+                    <MovieCard movie={m} />
                   </Col>
-                  ))
-                }
+                ))
+              }} />
+              <Route exact path="/" render={() => {
+                if (!user) return <Col>
+                    <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+                </Col>
+                return movies.map(m => (
+                    <Col md={3} key={m._id}>
+                    <MovieCard movie={m} />
+                    </Col>
+                ))
+                }} />
+              <Route path="/register" render={() => {
+                 return <Col>
+              <RegistrationView />
+              </Col>
+              }} />
+              <Route path="/movies/:movieId" render={({ match, history }) => {
+                return <Col md={8}>
+                  <MovieView movie={movies.find(m => m._id === match.params.movieId)} />
+                </Col>
+              }} />
               </Row>
+                if (!user) return <Row>
+                <Col>
+                  <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+                </Col>
+               </Row>
+          </Router>
             );         
     }}
     export default MainView;
