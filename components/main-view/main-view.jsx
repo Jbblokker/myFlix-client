@@ -64,7 +64,7 @@ export class MainView extends React.Component {
         });
     }
 
-    getMovies(token){
+    getMovies(token) {
         axios.get('https://sleepy-crag-80436.herokuapp.com/movies', {
             headers: { Authorization: `Bearer ${token}`}
         })
