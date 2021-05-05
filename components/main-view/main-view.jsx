@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, matchPath, Route } from "react-router-dom";
 
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
@@ -33,17 +33,6 @@ export class MainView extends React.Component {
             console.log(error);
         });
     }
-
-
-    componentDidMount() {
-        let accessToken = localStorage.getItem('token');
-        if (accessToken !== null) {
-            this.setState({
-                user: localStorage.getItem ('user')
-            });
-            this.getMovies(accessToken);
-        }
-    }
     /*when a movie is clicked, this function is invoked and updates the state
     of the `selectedMovie` *property to that movie*/
 
@@ -61,7 +50,7 @@ export class MainView extends React.Component {
             this.setState({
                 user: authData.user.Username
         });
-            
+    
         localStorage.setItem('token', authData.token);
         localStorage.setItem('user', authData.user.Username);
         this.getMovies(authData.token);
@@ -75,7 +64,7 @@ export class MainView extends React.Component {
         });
     }
 
-    getMovies(token){
+    getMovies(token) {
         axios.get('https://sleepy-crag-80436.herokuapp.com/movies', {
             headers: { Authorization: `Bearer ${token}`}
         })
@@ -92,13 +81,12 @@ export class MainView extends React.Component {
 
     render(){
         const { movies, selectedMovie, user } = this.state;
-       // <button onClick={() { this.onLoggedOut() }}>Lougout</button>
-
+      
         /* If there is no user, the LoginView is rendered. If there is a user logged in, the user
         details are *passed as a prop to the LoginView*/
       
         //before the movie have been loaded
-       if (movies.length === 0) return <div className="main-view"/>;
+       if (!user && movies.length === 0) return <div className="main-view"/>;
 
         return(
             <Router>
@@ -113,16 +101,6 @@ export class MainView extends React.Component {
                   </Col>
                 ))
               }} />
-              <Route exact path="/" render={() => {
-                if (!user) return <Col>
-                    <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
-                </Col>
-                return movies.map(m => (
-                    <Col md={3} key={m._id}>
-                    <MovieCard movie={m} />
-                    </Col>
-                ))
-                }} />
               <Route path="/register" render={() => {
                  return <Col>
               <RegistrationView />
@@ -133,13 +111,24 @@ export class MainView extends React.Component {
                   <MovieView movie={movies.find(m => m._id === match.params.movieId)} />
                 </Col>
               }} />
-              </Row>
-                if (!user) return <Row>
-                <Col>
-                  <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
-                </Col>
-               </Row>
+              <Route path="/genres/:name" render={({ match, history }) => {
+                  if (movies.length === 0) return <div className="main-view" />;
+                  return <Col md={8}>
+                      <GenreView genre={movies.find(m => m.Genre.Name === matchPath.params.name)
+                      .Genre} />
+                  </Col>
+              }}/>
+              <Route path="/directors/:name" render={({ match, history }) => {
+                  if (movies.length === 0) return <div className="main-view" />;
+                  return <Col md={8}>
+                      <DirectorView director={movies.find(m => m.Director.Name === matchPath.params.name)
+                      .Director} />
+                  </Col>
+              }}/>
+            </Row>
+              
           </Router>
+
             );         
     }}
     export default MainView;
