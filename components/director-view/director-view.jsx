@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 export class DirectorView extends React.Component {
 
     render() {
@@ -13,7 +14,7 @@ export class DirectorView extends React.Component {
                 </div>
                 <div className="director-bio">
                     <span className="label">Bio</span>
-                    <span className="value">{director.Bio}</span>
+                    <span className="value">{Director.Bio}</span>
                 </div>
             </div>    
         );
