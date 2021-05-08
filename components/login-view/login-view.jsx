@@ -6,6 +6,7 @@ import axios from 'axios';
 //import styling
 import './login-view.scss';
 
+//export loginView
 export function LoginView(props) {
     const [username, setUsername ] = useState('');
     const [password, setPassword ] = useState('');
