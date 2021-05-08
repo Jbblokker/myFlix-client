@@ -1,16 +1,31 @@
 .my-flix {
-  color: #14222e;
+  color: #4b8ac2;
 }
+
 .login-page {
-  margin: 0;
-  text-align: center;
   columns: xs-3;
-  padding-left: 5px;
+  margin-left: 5;
+}
+
+.app-container {
+  margin-left: 5;
 }
 
 .form-control {
-  padding: 2px 5px;
-  size: small;
   columns: xs-3;
+}
+
+body {
+  background-color: blue;
+}
+.login-page {
+  margin: 7px;
+  margin-left: 15px;
+  text-align: center;
+  padding-left: 5px;
+}
+
+.login-input {
+  padding: 2px 5 px;
 }
 /*# sourceMappingURL=index.609f8ea4.css.map */
