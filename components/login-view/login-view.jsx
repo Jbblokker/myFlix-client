@@ -27,12 +27,14 @@ export function LoginView(props) {
             console.log(e);
         })
     };
+    this.state = { color: "#282c34"};
 
     return (
+        
         <Form className="login-page">
             <Form.Group controlId="formUsername">
                 <Form.Label>Username</Form.Label>
-                <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
+                <Form.Control type="text" className="login-input" size="sm" placeholder="Type Username Here" onChange={e => setUsername(e.target.value)} />
             </Form.Group>
 
 
