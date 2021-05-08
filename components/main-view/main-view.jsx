@@ -22,6 +22,7 @@ export class MainView extends React.Component {
         };
     }
     
+    
     componentDidMount(){
         axios.get('https://sleepy-crag-80436.herokuapp.com/movies')
         .then(response => {
