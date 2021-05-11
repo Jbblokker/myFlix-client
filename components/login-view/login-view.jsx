@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 //import styling
 import './login-view.scss';
@@ -27,7 +28,6 @@ export function LoginView(props) {
             console.log(e);
         })
     };
-    this.state = { color: "#282c34"};
 
     return (
         
@@ -41,8 +41,11 @@ export function LoginView(props) {
                 <Form.Control type= "password" placeholder=" Type Password Here" onChange={e => setPassword(e.target.value)} />
             </Form.Group>
             <Button variant="secondary" type="submit" onClick={handleSubmit}>
-                Submit
+                LOGIN
             </Button>
+                <Link to={`/register`}>
+                        <Button className='button-register' variant='primary'>REGISTER</Button>
+                </Link>
         </Form>
         
     );               
