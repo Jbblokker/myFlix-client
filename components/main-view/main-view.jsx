@@ -28,6 +28,15 @@ export class MainView extends React.Component {
     
     
     componentDidMount(){
+
+        let accessToken = localStorage.getItem('token');
+        if (accessToken !== null) {
+          this.setState({
+            user: localStorage.getItem('user')
+          });
+          this.getMovies(accessToken);
+        }
+       
         axios.get('https://sleepy-crag-80436.herokuapp.com/movies')
         .then(response => {
             this.setState({
@@ -69,12 +78,18 @@ export class MainView extends React.Component {
         });
     }
 
+    onRegister(register) {
+        this.setState({
+          register
+        });
+      }
+
     getMovies(token) {
         axios.get('https://sleepy-crag-80436.herokuapp.com/movies', {
             headers: { Authorization: `Bearer ${token}`}
         })
         .then(response => {
-            //assign the reslt to the state
+            //assign the result to the state
             this.setState({
                 movies: response.data
             });
@@ -100,6 +115,7 @@ export class MainView extends React.Component {
                   if (!user) return <Col>
                   <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
                 </Col>
+                if (movies.length === 0) return <div className="main-view" /> 
                 return movies.map(m => (
                   <Col md={3} key={m._id}>
                     <MovieCard movie={m} />
@@ -107,9 +123,7 @@ export class MainView extends React.Component {
                 ))
               }} />
               <Route path="/register" render={() => {
-                 return <Col>
-              <RegistrationView />
-              </Col>
+                  if (!register) return <RegisterView onRegister={(register) =>this.onRegister(register)}/>
               }} />
               <Route path="/movies/:movieId" render={({ match, history }) => {
                 return <Col md={8}>
