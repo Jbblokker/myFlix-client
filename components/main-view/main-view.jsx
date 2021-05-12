@@ -29,13 +29,13 @@ export class MainView extends React.Component {
     
     componentDidMount(){
 
-        let accessToken = localStorage.getItem('token');
-        if (accessToken !== null) {
-          this.setState({
-            user: localStorage.getItem('user')
-          });
-          this.getMovies(accessToken);
-        }
+        // let accessToken = localStorage.getItem('token');
+        // if (accessToken !== null) {
+        //   this.setState({
+        //     user: localStorage.getItem('user')
+        //   });
+        //   this.getMovies(accessToken);
+        // }
        
         axios.get('https://sleepy-crag-80436.herokuapp.com/movies')
         .then(response => {

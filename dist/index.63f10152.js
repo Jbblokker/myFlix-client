@@ -26520,13 +26520,13 @@ try {
       };
     }
     componentDidMount() {
-      let accessToken = localStorage.getItem('token');
-      if (accessToken !== null) {
-        this.setState({
-          user: localStorage.getItem('user')
-        });
-        this.getMovies(accessToken);
-      }
+      // let accessToken = localStorage.getItem('token');
+      // if (accessToken !== null) {
+      // this.setState({
+      // user: localStorage.getItem('user')
+      // });
+      // this.getMovies(accessToken);
+      // }
       _axiosDefault.default.get('https://sleepy-crag-80436.herokuapp.com/movies').then(response => {
         this.setState({
           movies: response.data
