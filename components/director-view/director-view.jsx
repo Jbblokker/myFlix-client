@@ -12,9 +12,10 @@ export class DirectorView extends React.Component {
 
 
     render() {
-        const { description, onBackClick }= this.props;
-        
+        const { director, onBackClick}= this.props;
+
         return (
+          <Container className='director-container'>
             <div className="director-view">
                 <Card className="director-card">
                     <Card.Title className='director-title'>DIRECTOR</Card.Title>
