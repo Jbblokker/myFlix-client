@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 export class MovieView extends React.Component {
 
     render() {
-        const { movie, onBackClick }= this.props;
+        const { movie, director,  onBackClick }= this.props;
 
         return (         
             <div className="movie-view">
@@ -28,10 +28,13 @@ export class MovieView extends React.Component {
                         <Button variant="link">Director</Button>
                     </link> 
                     
-                    <link to={'/genres/${movie.Genre.Name}'}>
-                        <Button variant="link">Genre</Button>
-                    </link>
-
+                    <Link to={`/genres/${movie.Genre.Name}`}>
+                        <Button variant="secondary"> Genre </Button>
+                </Link>
+                <Link to={`/`}>
+                        <Button className='button-back' variant='primary'>Back</Button>
+                </Link>
+               
             </div>
         );
     }
