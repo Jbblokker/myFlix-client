@@ -2,14 +2,18 @@ import React from 'react';
 import axios from 'axios';
 
 import { BrowserRouter as Router, matchPath, Route } from "react-router-dom";
-
+//imports of other pages to main page
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
-import { RegistrationView } from '../registration-view/registration-view';
-
+import { RegisterView } from '../registration-view/registration-view';
+import { GenreView } from '../genre-view/genre-view';
+import { DirectorView } from '../director-view/director-view';
+//styling imports
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
+
 
 export class MainView extends React.Component {
 
