@@ -1,11 +1,14 @@
 import React from 'react';
+import { Link } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
+
 
 export class MovieView extends React.Component {
 
     render() {
         const { movie, onBackClick }= this.props;
 
-        return (
+        return (         
             <div className="movie-view">
                 <div className="movie-poster">
                     <img src={movie.ImagePath} />
