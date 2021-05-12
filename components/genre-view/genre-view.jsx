@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
 
 export class GenreView extends React.Component {
 
@@ -12,8 +13,13 @@ export class GenreView extends React.Component {
                     <span className="value">{genre.Name}</span>
                 </div>
                 <div className="genre-description">
-                    <span className="label">Description</span>
-                    <span className="value">{genre.Description</span>
+                    <span className="label">Description: </span>
+                    <span className="value">{genre.Description}</span>
+                </div>
+                <div className="genre-button">
+                    <Button variant="primary" onClick={() => onBackClick()}>
+                      Back
+                    </Button>
                 </div>
             </div>
         );
