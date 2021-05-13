@@ -22,7 +22,8 @@ export class MainView extends React.Component {
         //Intial state is set to null
         this.state = {
             movies:[],
-            user: null
+            user: null,
+            token: null,
         };
     }
     
@@ -32,7 +33,8 @@ export class MainView extends React.Component {
         // let accessToken = localStorage.getItem('token');
         // if (accessToken !== null) {
         //   this.setState({
-        //     user: localStorage.getItem('user')
+        //     user: localStorage.getItem('user'),
+        //     token:accessToken
         //   });
         //   this.getMovies(accessToken);
         // }
@@ -40,7 +42,8 @@ export class MainView extends React.Component {
         axios.get('https://sleepy-crag-80436.herokuapp.com/movies')
         .then(response => {
             this.setState({
-                movies: response.data
+                movies: response.data,
+                //token: access.token
             });
         })
         .catch(error => {
@@ -100,13 +103,13 @@ export class MainView extends React.Component {
     }
 
     render(){
-        const { movies, selectedMovie, user } = this.state;
+        const { movies, register, selectedMovie, user } = this.state;
       
         /* If there is no user, the LoginView is rendered. If there is a user logged in, the user
         details are *passed as a prop to the LoginView*/
       
         //before the movie have been loaded
-       if (!user && movies.length === 0) return <div className="main-view"/>;
+       if (!user && movies.length === 0) return <div className="main-view">Loading...</div>;
 
         return(
             <Router>
