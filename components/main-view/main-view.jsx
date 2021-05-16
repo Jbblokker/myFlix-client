@@ -8,12 +8,13 @@ import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { RegisterView } from '../registration-view/registration-view';
 import { GenreView } from '../genre-view/genre-view';
+import { ProfileView } from '../profile-view/profile-view';
 import { DirectorView } from '../director-view/director-view';
 //styling imports
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
-
+import  { Navbar } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 
 export class MainView extends React.Component {
 
@@ -103,8 +104,8 @@ export class MainView extends React.Component {
     }
 
     render(){
-        const { movies, register, selectedMovie, user } = this.state;
-      
+        const { movies, register, selectedMovie, user } = this.state;    
+                  
         /* If there is no user, the LoginView is rendered. If there is a user logged in, the user
         details are *passed as a prop to the LoginView*/
       
@@ -112,7 +113,13 @@ export class MainView extends React.Component {
        if (!user && movies.length === 0) return <div className="main-view">Loading...</div>;
 
         return(
+           
+                 
             <Router>
+                <Navbar class="mainNav navbvar-dark bg dark">
+                    <h5>TESTING</h5>
+                    <Button class="primary"> TESTING </Button>
+                </Navbar>
             <Row className="main-view justify-content-md-center">
               <Route exact path="/" render={() => {
                   if (!user) return <Col>
@@ -128,6 +135,14 @@ export class MainView extends React.Component {
               <Route path="/register" render={() => {
                   if (!register) return <RegisterView onRegister={(register) =>this.onRegister(register)}/>
               }} />
+            <Route exact path="/profile" render={({ }) => {
+              return <Col md={9}>
+                {/* key={value} */}
+                <ProfileView movies={movies} />
+              </Col>
+            }} />
+
+
               <Route path="/movies/:movieId" render={({ match, history }) => {
                 return <Col md={8}>
                   <MovieView movie={movies.find(m => m._id === match.params.movieId)}
@@ -149,8 +164,11 @@ export class MainView extends React.Component {
                   </Col>
               }}/>
             </Row>
+
               
           </Router>
+                          
+
 
             );         
     }}
