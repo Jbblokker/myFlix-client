@@ -1,10 +1,13 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
+
 //styling from bootstrap
 import { Card } from 'react-bootstrap';
 import { Container } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
+
+//internal styling 
 import './director-view.scss';
 
 export class DirectorView extends React.Component {
@@ -15,17 +18,17 @@ export class DirectorView extends React.Component {
         const { director, onBackClick}= this.props;
 
         return (
-          <Container className='director-container'>
+          <Container className="director-container">
             <div className="director-view">
                 <Card className="director-card">
-                    <Card.Title className='director-title'>DIRECTOR</Card.Title>
-                        <div className='director-name'>
-                             <span className="label">Name: </span>
-                              <span className="value">{director.Name}</span>
+                    <div className="director-name">
+                      <Card.Title className="text-white">DIRECTOR</Card.Title>
+                             <span className="text-white font-weight-bold">Name: </span>
+                              <span className="text-white">{director.Name}</span>
                         </div>
                         <div className="director-bio">
-                              <span className="label">Bio: </span>
-                              <span className="value">{director.Bio}</span>
+                              <span className="text-white font-weight-bold">Bio: </span>
+                              <span className="text-white">{director.Bio}</span>
                         </div>
                         <div className='director-back'>
                             <Button variant="primary" onClick={() => onBackClick()}>
