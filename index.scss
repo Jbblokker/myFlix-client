@@ -1,8 +1,13 @@
-$color: rgb(75, 138, 194);
-
-.my-flix{
-    color: $color;
+.body { 
+    padding: 70px;
+    margin-top: 180px;
+    background-color:#1c8694;
 }
+.app-container {
+    background-color:#1c8694;
+
+}
+
 .login-page {
     columns: xs-3;
     margin-left: 5;
@@ -15,8 +20,4 @@ $color: rgb(75, 138, 194);
 
 .form-control {
     columns: xs-3;
-}
-
-body { 
-    background-color: blue;
 }
