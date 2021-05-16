@@ -11,31 +11,31 @@ export class MovieView extends React.Component {
         const { movie, director, onBackClick }= this.props;
 
         return (         
-            <Card className="card-poster">
+            <Card controlId="card-poster">
                 <div className="movie-poster">
                     <img src={movie.ImagePath} />
                 </div>
                 <div className="movie-title">
-                    <span className="label">Title: </span>
-                    <span className="value">{movie.Title}</span>
+                    <span className="text-white font-weight-bold">Title: </span>
+                    <span className="text-white">{movie.Title}</span>
                 </div>
                 <div className="movie-description">
-                    <span className="label-Des">Description: </span>
-                    <span className="value">{movie.Description}</span>
+                    <span className="text-white font-weight-bold">Description: </span>
+                    <span className="text-white">{movie.Description}</span>
                 </div>
 
                 <Link to={`/directors/${movie.Director.Name}`}>
-                        <Button variant="primary"> Director </Button>
-                    </Link> 
+                        <Button variant="primary btn-block"> Director </Button>
+                </Link> 
                     
-                    <Link to={`/genres/${movie.Genre.Name}`}>
-                        <Button variant="primary"> Genre </Button>
+                <Link to={`/genres/${movie.Genre.Name}`}>
+                    <Button variant="primary btn-block"> Genre </Button>
                 </Link>
-                <div class="backbutton">
-                <Link to={`/`}>
-                        <Button className='button-back' variant='danger'>Back</Button>
-                </Link>
-                </div>
+                    <div className="backbutton">
+                        <Link to={`/`}>
+                            <Button className='button-back' variant='danger btn-block'>Back</Button>
+                        </Link>
+                    </div>
                
             </Card>
         );
