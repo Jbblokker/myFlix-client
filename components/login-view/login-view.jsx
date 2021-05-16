@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
@@ -33,19 +34,23 @@ export function LoginView(props) {
         
         <Form className="login-page">
             <Form.Group controlId="formUsername">
-                <Form.Label>Username</Form.Label>
+                <Form.Label className="text-white">Username</Form.Label>
                 <Form.Control type="text" className="login-input" size="sm" placeholder="Type Username Here" onChange={e => setUsername(e.target.value)} />
             </Form.Group>
             <Form.Group controlId="formPassword">
-                <Form.Label>Password</Form.Label>
+                <Form.Label class="text-white">Password</Form.Label>
                 <Form.Control type= "password" placeholder=" Type Password Here" onChange={e => setPassword(e.target.value)} />
             </Form.Group>
-            <Button variant="secondary" type="submit" onClick={handleSubmit}>
+            <Form.Group controlId="loginButton">
+            <Button variant="primary" type="submit" onClick={handleSubmit}>
                 LOGIN
             </Button>
+            </Form.Group>
+            <Form.Group controlId="registerButton">
                 <Link to={`/register`}>
-                        <Button className='button-register' variant='primary'>REGISTER</Button>
+                        <Button className="button-register" variant="secondary btn-block">REGISTER</Button>
                 </Link>
+            </Form.Group>
         </Form>
         
     );               
