@@ -17,7 +17,7 @@ export function RegisterView(props) {
         e.preventDefault();
         console.log(username, password, email, birthday);
         //props.onRegister(username); 
-    }
+    
     
     axios.post('https://sleepy-crag-80436.herokuapp.com/user', {
       Username: username,
@@ -34,6 +34,7 @@ export function RegisterView(props) {
     .catch(e => {
       console.log('error registering the user')
     });
+  }
 
       
     
