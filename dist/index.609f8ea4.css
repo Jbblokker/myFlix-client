@@ -1,5 +1,11 @@
-.my-flix {
-  color: #4b8ac2;
+.body {
+  padding: 70px;
+  margin-top: 180px;
+  background-color: #1c8694;
+}
+
+.app-container {
+  background-color: #1c8694;
 }
 
 .login-page {
@@ -14,31 +20,98 @@
 .form-control {
   columns: xs-3;
 }
-
-body {
-  background-color: blue;
+div.card {
+  background-color: darkslategrey;
+  padding: 10px;
 }
-.login-page {
-  margin: 7px;
-  margin-left: 15px;
+
+.btn-danger {
+  margin-top: 5px;
+  margin-bottom: 10px;
   text-align: center;
-  background-color: blueviolet;
+}
+
+.btn-primary {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.movie-description {
+  margin: 10px;
+  margin-bottom: 10px;
+}
+
+.movie-title {
+  margin: 10px;
+}
+.body {
+  background-color: #1c8694;
+}
+
+.card {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.body {
+  margin-top: 180px;
+}
+
+.login-page {
+  margin: 50px;
+  text-align: center;
+  background-color: darkslategrey;
   padding-left: 5px;
+  padding-top: 15px;
+  padding-right: 5px;
+  padding-bottom: 5px;
+  border-radius: 8px;
 }
 
 .login-input {
   padding: 2px 5 px;
 }
+
+.body {
+  color: black;
+}
+.card {
+  margin-top: 180px;
+}
+
+.btn-primary {
+  margin-top: 10px;
+}
+
+.genre-description {
+  margin: 10px;
+}
+
+.genre-view {
+  padding-top: 10px;
+}
+
 .container {
   padding-top: -50px;
   text-align: center;
 }
 
-director-view {
+.director-title {
   text-align: center;
 }
 
-.director-title {
-  text-align: center;
+.btn-primary {
+  margin-top: 10px;
+}
+
+.director-name {
+  margin: 5px;
+}
+
+.director-bio {
+  margin: 5px;
+}
+
+.card-title {
+  padding-top: 10px;
 }
 /*# sourceMappingURL=index.609f8ea4.css.map */
