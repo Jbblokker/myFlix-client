@@ -1,10 +1,15 @@
 import React from 'react';
 import axios from 'axios';
 
-import { BrowserRouter as Router, matchPath, Route } from "react-router-dom";
+import { connect } from 'react-redux';
+
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
+import { setMovies } from '../../actions/actions';
+
+//import MoviesList from '../movies-list/movies-list';
 //imports of other pages to main page
 import { LoginView } from '../login-view/login-view';
-import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { RegisterView } from '../registration-view/registration-view';
 import { GenreView } from '../genre-view/genre-view';
@@ -16,13 +21,13 @@ import Col from 'react-bootstrap/Col';
 import  { Navbar } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 
-export class MainView extends React.Component {
+ class MainView extends React.Component {
 
     constructor() {
         super();
         //Intial state is set to null
         this.state = {
-            movies:[],
+            //movies: [],
             user: null,
             token: null,
         };
@@ -38,19 +43,24 @@ export class MainView extends React.Component {
         //     token:accessToken
         //   });
         //   this.getMovies(accessToken);
-        // }
-       
-        axios.get('https://sleepy-crag-80436.herokuapp.com/movies')
-        .then(response => {
-            this.setState({
-                movies: response.data,
-                //token: access.token
-            });
+    }
+      getMovies(token) { 
+        axios.get('https://sleepy-crag-80436.herokuapp.com/movies', {
+            headers: { Authorization: `Bearer ${token}`}
         })
-        .catch(error => {
+        .then(response => {
+            this.props.setMovies(response.data);
+            //this.setState({
+               // movies: response.data,
+                //token: access.token
+            })
+    
+        .catch(function (error) {
             console.log(error);
         });
     }
+
+    
     /*when a movie is clicked, this function is invoked and updates the state
     of the `selectedMovie` *property to that movie*/
 
@@ -104,7 +114,10 @@ export class MainView extends React.Component {
     }
 
     render(){
-        const { movies, register, selectedMovie, user } = this.state;    
+        //const { movies, register, selectedMovie, user } = this.state;  
+        
+        let { movies } = this.props;
+        let { user } = this.state;
                   
         /* If there is no user, the LoginView is rendered. If there is a user logged in, the user
         details are *passed as a prop to the LoginView*/
@@ -126,7 +139,9 @@ export class MainView extends React.Component {
                   <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
                 </Col>
                 if (movies.length === 0) return <div className="main-view" /> 
-                return movies.map(m => (
+                    return <MovieList movies={movies}/> }} />
+                    {/* return movies.map(m => ( 
+                 */}
                   <Col md={3} key={m._id}>
                     <MovieCard movie={m} />
                   </Col>
@@ -166,10 +181,10 @@ export class MainView extends React.Component {
             </Row>
 
               
-          </Router>
-                          
-
-
+          </Router>                       
             );         
     }}
-    export default MainView;
+    let mapStateToProps = state => {
+        return { movies: state.movies }
+    }
+    export default connect(mapStateToProps, { setMovies } )(MainView);
