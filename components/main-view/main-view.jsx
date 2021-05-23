@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 
@@ -7,27 +8,28 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import { setMovies } from '../../actions/actions';
 
-//import MoviesList from '../movies-list/movies-list';
-//imports of other pages to main page
+//imports of other pages to main-View
 import { LoginView } from '../login-view/login-view';
 import { MovieView } from '../movie-view/movie-view';
 import { RegisterView } from '../registration-view/registration-view';
 import { GenreView } from '../genre-view/genre-view';
 import { ProfileView } from '../profile-view/profile-view';
 import { DirectorView } from '../director-view/director-view';
-//styling imports
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import  { Navbar } from 'react-bootstrap';
-import { Link } from "react-router-dom";
+import MovieList from '../movie-list/movies-list';
 
- class MainView extends React.Component {
+//import local styling 
+import "./main-view.scss";
+
+//styling imports
+import  { Navbar, NavDropdown, Button, Col, Row} from 'react-bootstrap';
+
+export class MainView extends React.Component {
 
     constructor() {
         super();
-        //Intial state is set to null
+        //Initial state is set to null
         this.state = {
-            //movies: [],
+            movies: [],
             user: null,
             token: null,
         };
@@ -36,16 +38,17 @@ import { Link } from "react-router-dom";
     
     componentDidMount(){
 
-        // let accessToken = localStorage.getItem('token');
-        // if (accessToken !== null) {
-        //   this.setState({
-        //     user: localStorage.getItem('user'),
-        //     token:accessToken
-        //   });
-        //   this.getMovies(accessToken);
+        let accessToken = localStorage.getItem('token');
+        if (accessToken !== null) {
+            this.setState({
+             user: localStorage.getItem('user'),
+             token:accessToken
+           });
+         this.getMovies(accessToken);
+        }
     }
-      getMovies(token) { 
-        axios.get('https://sleepy-crag-80436.herokuapp.com/movies', {
+    getMovies(token) { 
+        axios.get(`https://sleepy-crag-80436.herokuapp.com/movies`, {
             headers: { Authorization: `Bearer ${token}`}
         })
         .then(response => {
@@ -53,7 +56,7 @@ import { Link } from "react-router-dom";
             //this.setState({
                // movies: response.data,
                 //token: access.token
-            })
+       })
     
         .catch(function (error) {
             console.log(error);
@@ -71,13 +74,13 @@ import { Link } from "react-router-dom";
     }
 
     /* When a user successfully logs in, this function updates the `user` for
-    entry in state to the *particual user*/
+    entry in state to the *particular user*/
 
     onLoggedIn(authData) {
         console.log(authData); 
             this.setState({
                 user: authData.user.Username
-        });
+            });
     
         localStorage.setItem('token', authData.token);
         localStorage.setItem('user', authData.user.Username);
@@ -96,22 +99,22 @@ import { Link } from "react-router-dom";
         this.setState({
           register
         });
-      }
-
-    getMovies(token) {
-        axios.get('https://sleepy-crag-80436.herokuapp.com/movies', {
-            headers: { Authorization: `Bearer ${token}`}
-        })
-        .then(response => {
-            //assign the result to the state
-            this.setState({
-                movies: response.data
-            });
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
     }
+
+    // getMovies(token) {
+    //     axios.get('https://sleepy-crag-80436.herokuapp.com/movies', {
+    //         headers: { Authorization: `Bearer ${token}`}
+    //     })
+    //     .then(response => {
+    //         //assign the result to the state
+    //         this.setState({
+    //             movies: response.data
+    //         });
+    //     })
+    //     .catch(function (error) {
+    //         console.log(error);
+    //     });
+    // }
 
     render(){
         //const { movies, register, selectedMovie, user } = this.state;  
@@ -123,30 +126,36 @@ import { Link } from "react-router-dom";
         details are *passed as a prop to the LoginView*/
       
         //before the movie have been loaded
-       if (!user && movies.length === 0) return <div className="main-view">Loading...</div>;
+       //if (!user && movies.length === 0) return <div className="main-view">Loading...</div>;
 
-        return(
-           
-                 
+        return(                    
             <Router>
-                <Navbar class="mainNav navbvar-dark bg dark">
-                    <h5>TESTING</h5>
-                    <Button class="primary"> TESTING </Button>
+                <Navbar bg="dark" variant="dark" fixed="top">
+                   <Link to={'/'}>
+                        <h5 className="header text-white">MyFlix by [ Blokked code ]</h5> 
+                    </Link>
+                        <Navbar.Collapse id="navbar-responsive">
+                    
+                
+                    <NavDropdown title="Options" id="collapsible-nav-dropdown" stye="marginRight: 100"> 
+                        <NavDropdown.Item href="/profile/">Profile</NavDropdown.Item>
+                        <NavDropdown.Item href="/" onClick={() => { this.onLoggedOut() }}>Logout</NavDropdown.Item> 
+                    </NavDropdown>
+                </Navbar.Collapse>
                 </Navbar>
             <Row className="main-view justify-content-md-center">
               <Route exact path="/" render={() => {
                   if (!user) return <Col>
                   <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
-                </Col>
+              </Col>
                 if (movies.length === 0) return <div className="main-view" /> 
                     return <MovieList movies={movies}/> }} />
                     {/* return movies.map(m => ( 
-                 */}
-                  <Col md={3} key={m._id}>
-                    <MovieCard movie={m} />
-                  </Col>
-                ))
-              }} />
+                        <Col md={3} key={m._id}>
+                             <MovieCard movie={m} />
+                        </Col>
+                    )) 
+                }}  */}
               <Route path="/register" render={() => {
                   if (!register) return <RegisterView onRegister={(register) =>this.onRegister(register)}/>
               }} />
@@ -156,7 +165,6 @@ import { Link } from "react-router-dom";
                 <ProfileView movies={movies} />
               </Col>
             }} />
-
 
               <Route path="/movies/:movieId" render={({ match, history }) => {
                 return <Col md={8}>

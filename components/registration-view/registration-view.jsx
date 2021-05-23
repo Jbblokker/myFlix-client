@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 import PropTypes from 'prop-types';
-import Container from 'react-bootstrap/Container';
-import Form  from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 
+//import bootstrap styling
+import  { Container, Form, Button } from 'react-bootstrap';
 
 export function RegisterView(props) {
     const [ username, setUsername ] = useState('');

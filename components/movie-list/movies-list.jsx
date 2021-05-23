@@ -6,11 +6,9 @@ import { MovieCard } from '../movie-card/movie-card';
 
 import VisibilityFilterInput from '../visibility-filter-input/visbility-filter-input' ;
 
-import { MovieCard } from '../movie-card/movie-card';
-
 const mapStateToProps = state => {
     const { visibilityFilter } = state;
-    return { visbilityFilter };
+    return { visibilityFilter };
 };
 
 function MovieList(props) {
@@ -22,18 +20,18 @@ function MovieList(props) {
             (visibilityFilter.toLowerCase()));
     }
 
-    if (!movies) return <div clsassName="main-view"/>;
+    if (!movies) return <div className="main-view"/>;
 
     return <>
     <Col md={12} style={{ margin: '1em' }}>
-        <VisibilityFilterInput visibilityFilter={visbilityFilter}/>
+        <VisibilityFilterInput visibilityFilter={visibilityFilter}/>
         </Col>
         {filteredMovies.map(m => (
-        <Col md={3} key={m_id}>
+        <Col md={3} key={m._id}>
             <MovieCard movie={m}/>
         </Col>
     ))}
     </>;
 }
 
-export default connect(mapsStateToProps)(MoviesList);
+export default connect(mapStateToProps)(MovieList);
