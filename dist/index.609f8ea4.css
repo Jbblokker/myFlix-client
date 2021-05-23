@@ -20,6 +20,10 @@
 .form-control {
   columns: xs-3;
 }
+
+h5 {
+  color: white;
+}
 div.card {
   background-color: darkslategrey;
   padding: 10px;
@@ -44,30 +48,9 @@ div.card {
 .movie-title {
   margin: 10px;
 }
-.body {
-  margin-top: 180px;
-}
-
-.login-page {
-  margin: 50px;
-  text-align: center;
-  background-color: darkslategrey;
-  padding-left: 5px;
-  padding-top: 15px;
-  padding-right: 5px;
-  padding-bottom: 5px;
-  border-radius: 8px;
-}
-
-.login-input {
-  padding: 2px 5 px;
-}
-
-.body {
-  color: black;
-}
-.card {
-  margin-top: 180px;
+div.card {
+  margin-top: 100px;
+  padding-top: 100 px;
 }
 
 .btn-primary {
@@ -105,5 +88,38 @@ div.card {
 
 .card-title {
   padding-top: 10px;
+}
+.body {
+  background-color: #1c8694;
+}
+
+.card {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.body {
+  margin-top: 180px;
+}
+
+.login-page {
+  margin: 50px;
+  text-align: center;
+  background-color: darkslategrey;
+  padding-left: 5px;
+  padding-top: 15px;
+  padding-right: 5px;
+  padding-bottom: 5px;
+  border-radius: 8px;
+}
+
+.login-input {
+  padding: 2px 5 px;
+}
+
+.body {
+  color: black;
+}
+body {
+  background: #1c8694 !important;
 }
 /*# sourceMappingURL=index.609f8ea4.css.map */
