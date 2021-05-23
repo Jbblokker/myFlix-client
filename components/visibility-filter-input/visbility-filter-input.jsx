@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import Form from 'react-bootstrap/Form';
 
-import { setFilter } from '../../src/actions/actions';
+import { setFilter } from '../../actions/actions';
 
 function VisibilityFilterInput(props) {
     return <Form.Control
@@ -11,9 +11,8 @@ function VisibilityFilterInput(props) {
     value={props.visiblityFilter}
     placeholder="filter"
     />;
-
+}
     export default connect(
         null,
         { setFilter }
     )(VisibilityFilterInput);
-}
