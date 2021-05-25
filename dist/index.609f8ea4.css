@@ -48,6 +48,10 @@ div.card {
 .movie-title {
   margin: 10px;
 }
+
+img {
+  width: 70%;
+}
 div.card {
   margin-top: 100px;
   padding-top: 100 px;
