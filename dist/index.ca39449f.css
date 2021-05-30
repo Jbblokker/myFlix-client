@@ -1,0 +1,16 @@
+.login-page {
+  margin: 0;
+  text-align: center;
+  columns: xs-3;
+  padding-left: 5px;
+}
+
+.form-control {
+  padding: 2px 5px;
+  size: small;
+  columns: xs-3;
+}
+.my-flix {
+  color: #14222e;
+}
+/*# sourceMappingURL=index.ca39449f.css.map */
