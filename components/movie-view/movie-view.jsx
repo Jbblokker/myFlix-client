@@ -65,7 +65,7 @@ export class MovieView extends React.Component {
                 <Link to={`/genres/${movie.Genre.Name}`}>
                     <Button variant="primary btn-block"> Genre </Button>
                 </Link>
-                {!fav$ && <Button variant="black btn-block" onClick={this.addFavorites}>Add to Favorites</Button>}       
+                {<Button variant="black btn-block" onClick={this.addFavorites}>Add to Favorites</Button>}       
                 <div className="backbutton">
                     <Link to={`/`}>
                         <Button className='button-back' variant='danger btn-block'>Back</Button>
