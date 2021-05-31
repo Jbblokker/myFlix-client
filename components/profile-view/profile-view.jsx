@@ -103,7 +103,7 @@ export class ProfileView extends React.Component {
         }
 
         setPassword(input) {
-        this.Password = input;
+        this.Password = input; 
         }
 
         setEmail(input) {
