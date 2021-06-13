@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 import axios from 'axios';
@@ -20,7 +20,7 @@ export class MovieView extends React.Component {
         this.state = { FavoriteMovies: [] };
     }
         //add to favorites
-        addFavorite = (e) => {
+         addFavorite = (e) => {
             e.preventDefault();
             const token = localStorage.getItem('token');
             const user = localStorage.getItem('user');
@@ -30,7 +30,7 @@ export class MovieView extends React.Component {
                 headers: { Authorization: `Bearer ${token}`}
             })
 
-            .then(response => {
+            .then((response) => {
                 alert(`${this.props.movie.Title} added to your Favorites List.`)
                 this.setState({
                     fav: true,
@@ -65,7 +65,7 @@ export class MovieView extends React.Component {
                 <Link to={`/genres/${movie.Genre.Name}`}>
                     <Button variant="primary btn-block"> Genre </Button>
                 </Link>
-                {<Button variant="black btn-block" onClick={this.addFavorites}>Add to Favorites</Button>}       
+                {<Button variant="success btn-block" onClick={this.addFavorite}>Add to Favorites</Button>}       
                 <div className="backbutton">
                     <Link to={`/`}>
                         <Button className='button-back' variant='danger btn-block'>Back</Button>

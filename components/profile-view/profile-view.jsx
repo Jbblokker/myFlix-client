@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import propTypes from 'prop-types';
 import { render } from 'react-dom';
 
-//Bootstrap components
+//import bootstrap styling
 import  { Button, Form, Container, Card } from 'react-bootstrap';
 
 //import local styling 
@@ -166,6 +166,8 @@ export class ProfileView extends React.Component {
             {favoriteMovies.length > 0 &&
                 favorites.map(m => (
             <div>
+                <br>test</br>
+
                 <Link key={m._id} to={`/movies/${m._id}`}>
                 <Button variant="link">{m.title}</Button>
                 </Link>
