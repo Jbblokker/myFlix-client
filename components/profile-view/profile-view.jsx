@@ -5,7 +5,7 @@ import propTypes from 'prop-types';
 import { render } from 'react-dom';
 
 //import bootstrap styling
-import  { Button, Form, Container, Card } from 'react-bootstrap';
+import  { Button, Form, Container, Card, FormLabel } from 'react-bootstrap';
 
 //import local styling 
 import './profile-view.scss';
@@ -31,7 +31,7 @@ export class ProfileView extends React.Component {
         const username = localStorage.getItem('user');
         let token = localStorage.getItem('token');
 
-        axios.get(`https://sleepy-crag-80436.herokuapp.com/users/${username}`, {
+        axios.get(`https://sleepy-crag-80436.herokuapp.com/user/${username}`, {
             headers: { Authorization: `Bearer ${token}`},
         })
 
@@ -72,7 +72,7 @@ export class ProfileView extends React.Component {
         const token = localStorage.getItem('token');
         const username = localStorage.getItem('user');
 
-        axios.put(`https://sleepy-crag-80436.herokuapp.com/users/${username}`,{
+        axios.put(`https://sleepy-crag-80436.herokuapp.com/user/${username}`,{
             headers: {Authorization:`Bearer ${token}`},
             data: {
                 username: newUsername ? newUsername : this.state.username,
@@ -89,11 +89,11 @@ export class ProfileView extends React.Component {
                 birthday: response.data.birthday,
             });
             alert('Changes have been successfully made.');
-            localStorage.setItem('user', this.state.username);
+            localStorage.setItem('user', this.state.Username);
         })
 
-        .catch(function (error){
-            console.log('update user function failed.')
+        .catch(function (e){
+            console.log('update user function failed.', e)
         });
     }
 
@@ -117,12 +117,21 @@ export class ProfileView extends React.Component {
 
         //remove favoriteMovie from user
         removeFavoriteMovie() {
-            e.preventDefault();
             const token = localStorage.getItem('token');
             const username = localStorage.getItem('user');
 
-            let favMov = favoriteMovies.map`<li(i => movies.find(m => i === m.id))li/>`
-        }
+            axios 
+            .delete(`https://sleepy-crag-80436.herokuapp.com/users/${username}/movies/movieID`, {
+              headers: { Authorization: `Bearer ${token}` },
+            })
+            .then(() => {
+              alert('Movie was removed');
+              this.componentDidMount();
+            })
+            .catch(function (error) {
+              console.log(error);
+            })        }
+            
         //remove a user 
         handleDeregister(e) {
             e.preventDefault();
@@ -130,7 +139,7 @@ export class ProfileView extends React.Component {
             const token = localStorage.getItem('token');
             const username = localStorage.getItem('user');
 
-            axios.delete(`https://sleepy-crag-80436.herokuapp.com/users/${username}`, {
+            axios.delete(`https://sleepy-crag-80436.herokuapp.com/user/${username}`, {
                 headers: { Authorization: `Bearer ${token}` },
             })
             .then(() => {
@@ -138,11 +147,11 @@ export class ProfileView extends React.Component {
                 localStorage.removeItem('token');
                 alert('Your account has successfully been removed.');
             })
-            .catch((e) => { 
-                console.log(e, 'user has not been removed');
+            .catch((error) => { 
+                console.log(error, 'user has not been removed');
             })
-            .catch((e) => {
-                console.log(e);
+            .catch((error) => {
+                console.log(error);
             });
         }
 
@@ -163,47 +172,49 @@ export class ProfileView extends React.Component {
             <Card className='profile-card' border='info'>
             <Card.Title className='profile-title'>Your List of Favorites</Card.Title>
             <div className='favorites-container'>
-            {favoriteMovies.length > 0 &&
-                favorites.map(m => (
-            <div>
-                <br>test</br>
-
-                <Link key={m._id} to={`/movies/${m._id}`}>
-                <Button variant="link">{m.title}</Button>
-                </Link>
-                <Button size='sm' className='remove-fav' variant='danger' onClick={(e) => this.removeFavorite(e, m._id)}>
+                             {favoriteMovies.length > 0 &&
+                        favorites.map(m => (
+                 <Card className="col-sm-14" controlId="cardmovie">
+                                <Card.Body>
+                            <Card.Title>{m.Title}</Card.Title>
+                    <Card.Img variant="top" src={m.ImagePath} />
+                    <Link to={`/movies/${m._id}`}>
+                        <Button variant="link">About</Button>
+                    </Link>
+                    <Button size='sm' className='profile-button remove-favorite' variant='danger' value={m._id} onClick={(error) => this.removeFavoriteMovie(error, m)}>
                 Remove
                 </Button>
-            </div>
+                </Card.Body>
+            </Card>
             ))
-            }
+           }
             </div>
             </Card>
 
             <Card className='update-card' border='info'>
             <Card.Title>Update Your Profile:</Card.Title>
             <Card.Body>
-            <Form noValidate validated={validated} className='update-form' onSubmit={(e) => this.handleUpdate(e, this.username, this.password, this.email, this.birthday)}>
+            <Form noValidate validated={validated} className='update-form' onSubmit={(error) => this.handleUpdate(error, this.username, this.password, this.email, this.birthday)}>
             <Form.Group controlId='formBasicUsername'>
             <Form.Label className='form-label'>Username</Form.Label>
-            <Form.Control type='text' placeholder='Change Username' onChange={() => this.setUsername(e.target.value)} pattern='[a-zA-Z0-9]{5,}' />
+            <Form.Control type='text' placeholder='Change Username' onChange={() => this.setUsername(error.target.value)} pattern='[a-zA-Z0-9]{5,}' />
             <Form.Control.Feedback type='invalid'>Please enter a valid username with at least 5 alphanumeric characters.</Form.Control.Feedback>
             </Form.Group>
             <Form.Group controlId='formBasicPassword'>
             <Form.Label className='form-label'>
                 Password<span className='pw'></span>
             </Form.Label>
-            <Form.Control type='password' placeholder='Current or New Password' onChange={(e) => this.setPassword(e.target.value)} pattern='.{5,}' />
+            <Form.Control type='password' placeholder='Current or New Password' onChange={(error) => this.setPassword(error.target.value)} pattern='.{5,}' />
             <Form.Control.Feedback type='invalid'>Please enter a valid password with at least 5 characters.</Form.Control.Feedback>
             </Form.Group>
             <Form.Group controlId='formBasicEmail'>
             <Form.Label className='form-label'>Email</Form.Label>
-            <Form.Control type='email' placeholder='Change Email' onChange={(e) => this.setEmail(e.target.value)} />
+            <Form.Control type='email' placeholder='Change Email' onChange={(error) => this.setEmail(error.target.value)} />
             <Form.Control.Feedback type='invalid'>Please enter a valid email address.</Form.Control.Feedback>
             </Form.Group>
             <Form.Group controlId='formBasicBirthday'>
             <Form.Label className='form-label'>Birthday</Form.Label>
-            <Form.Control type='date' placeholder='Change Birthday' onChange={(e) => this.setBirthday(e.target.value)} />
+            <Form.Control type='date' placeholder='Change Birthday' onChange={(error) => this.setBirthday(error.target.value)} />
             <Form.Control.Feedback type='invalid'>Please enter a valid birthday.</Form.Control.Feedback>
             </Form.Group>
             <Button className='update-profile-button' type='submit' variant='info'>
@@ -212,14 +223,15 @@ export class ProfileView extends React.Component {
             </Form>
             </Card.Body>
             </Card>
-
+            
 
         <Card className='update-card'>
         <Card.Title className='profile-title'>Delete Your Profile</Card.Title>
         <Card.Subtitle className='text-muted'>Once deleted, your account cannot be recovered. </Card.Subtitle>
+        <br></br>
         <Card.Subtitle className='text-muted'>( It is like a bad first date, no going back. )</Card.Subtitle>
         <Card.Body>
-        <Button className='button' variant='danger' onClick={(e) => this.handleDeregister(e)}>
+        <Button className='button' variant='danger' onClick={(error) => this.handleDeregister(error)}>
         Click Here
         </Button>
         </Card.Body>
