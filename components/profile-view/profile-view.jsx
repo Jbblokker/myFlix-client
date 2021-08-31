@@ -116,12 +116,12 @@ export class ProfileView extends React.Component {
 
 
         //remove favoriteMovie from user
-        removeFavoriteMovie() {
+        removeFavoriteMovie(movieId) {
             const token = localStorage.getItem('token');
             const username = localStorage.getItem('user');
 
             axios 
-            .delete(`https://sleepy-crag-80436.herokuapp.com/users/${username}/movies/movieID`, {
+            .delete(`https://sleepy-crag-80436.herokuapp.com/users/${username}/movies/${movieId}`, {
               headers: { Authorization: `Bearer ${token}` },
             })
             .then(() => {
@@ -181,7 +181,7 @@ export class ProfileView extends React.Component {
                     <Link to={`/movies/${m._id}`}>
                         <Button variant="link">About</Button>
                     </Link>
-                    <Button size='sm' className='profile-button remove-favorite' variant='danger' value={m._id} onClick={(error) => this.removeFavoriteMovie(error, m)}>
+                    <Button size='sm' className='profile-button remove-favorite' variant='danger' value={m._id} onClick={(error) => this.removeFavoriteMovie(m._id)}>
                 Remove
                 </Button>
                 </Card.Body>

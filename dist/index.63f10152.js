@@ -29899,15 +29899,13 @@ try {
         });
       }
     }, {
-      key: "onRegister",
-      value: function onRegister(register) {
-        this.setState({
-          register: register
-        });
-      }
-    }, {
       key: "render",
-      value: function render() {
+      value: // onRegister(register) {
+      // this.setState({
+      // register
+      // });
+      // }
+      function render() {
         var _this3 = this;
         // const { movies, register, selectedMovie, user } = this.state;
         var movies = this.props.movies;
@@ -48908,11 +48906,11 @@ try {
     }, {
       key: "removeFavoriteMovie",
       value: // remove favoriteMovie from user
-      function removeFavoriteMovie() {
+      function removeFavoriteMovie(movieId) {
         var _this4 = this;
         var token = localStorage.getItem('token');
         var username = localStorage.getItem('user');
-        _axios["default"]["delete"](("https://sleepy-crag-80436.herokuapp.com/users/").concat(username, "/movies/movieID"), {
+        _axios["default"]["delete"](("https://sleepy-crag-80436.herokuapp.com/users/").concat(username, "/movies/").concat(movieId), {
           headers: {
             Authorization: ("Bearer ").concat(token)
           }
@@ -48983,7 +48981,7 @@ try {
                 variant: "danger",
                 value: m._id,
                 onClick: function onClick(error) {
-                  return _this5.removeFavoriteMovie(error, m);
+                  return _this5.removeFavoriteMovie(m._id);
                 }
               }, "Remove")))
             );

@@ -96,14 +96,14 @@ export class MainView extends React.Component {
         });
     }
 
-    onRegister(register) {
-        this.setState({
-          register
-        });
-    }
+    //onRegister(register) {
+       // this.setState({
+       //   register
+      //  });
+  //  }
 
     render(){
-        //const { movies, register, selectedMovie, user } = this.state;  
+        // const { movies, register, selectedMovie, user } = this.state;  
         
         let { movies } = this.props;
         let { user, register } = this.state;
