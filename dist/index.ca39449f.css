@@ -21,8 +21,9 @@
   color: black;
 }
 div.card {
-  background-color: darkslategrey;
-  padding: 10px;
+  background-color: #1E2127;
+  border: 1px solid white;
+  padding: 15px;
 }
 
 .btn-danger {
@@ -90,24 +91,35 @@ div.card {
   padding-top: 10px;
 }
 .body {
-  background-color: #1c8694;
+  background-color: #1B1D24;
 }
 
 .card {
   margin-top: 10px;
   margin-bottom: 10px;
+  display: flex;
+  align-items: space-between;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.movie-img {
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 body {
-  background: #1c8694 !important;
+  background: #1B1D24 !important;
 }
 .body {
   padding: 70px;
   margin-top: 180px;
-  background-color: #1c8694;
+  background-color: #1B1D24;
 }
 
 .app-container {
-  background-color: #1c8694;
+  background-color: #1B1D24;
 }
 
 .login-page {

@@ -49457,9 +49457,12 @@ try {
             className: "col-sm-14",
             controlId: "cardmovie"
           }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Card.Img, {
+            "class": "movie-img",
             variant: "top",
             src: movie.ImagePath
-          }), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Card.Body, null, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Card.Title, null, movie.Title), /*#__PURE__*/_react["default"].createElement(_reactRouterDom.Link, {
+          }), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Card.Body, null, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Card.Title, {
+            "class": "card-title"
+          }, movie.Title), /*#__PURE__*/_react["default"].createElement(_reactRouterDom.Link, {
             to: ("/movies/").concat(movie._id)
           }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
             variant: "link"
