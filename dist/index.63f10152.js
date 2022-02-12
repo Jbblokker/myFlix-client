@@ -49465,7 +49465,8 @@ try {
           }, movie.Title), /*#__PURE__*/_react["default"].createElement(_reactRouterDom.Link, {
             to: ("/movies/").concat(movie._id)
           }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
-            variant: "link"
+            variant: "primary btn",
+            "class": "movie-card-button"
           }, "About"))))
         );
       }

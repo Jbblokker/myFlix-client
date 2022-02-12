@@ -2,7 +2,7 @@
   "name": "myflix-client",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.html",
+  "default": "src/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "parcel index.html"
@@ -18,19 +18,20 @@
   },
   "homepage": "https://github.com/Jbblokker/myFlix-client#readme",
   "dependencies": {
-    "axios": "^0.21.1",
-    "prop-types": "^15.7.2",
+    "axios": "^0.21.4",
+    "prop-types": "^15.8.1",
     "react": "^17.0.2",
-    "react-bootstrap": "^1.5.2",
+    "react-bootstrap": "^1.6.4",
     "react-dom": "^17.0.2",
-    "react-redux": "^7.2.4",
-    "react-router-dom": "^5.2.0",
-    "redux": "^4.1.0",
+    "react-redux": "^7.2.6",
+    "react-router-dom": "^5.3.0",
+    "redux": "^4.1.2",
     "redux-devtools-extension": "^2.13.9"
   },
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.0.0-beta.2",
-    "parcel": "2.0.0-beta.2"
+    "@parcel/transformer-sass": "^2.3.1",
+    "parcel": "^2.3.1",
+    "process": "0.11.10"
   },
   "babel": {
     "presets": [
@@ -39,5 +40,6 @@
     ],
     "plugins": [
       "@babel/plugin-proposal-class-properties"
-    ]}
+    ]
+  }
 }

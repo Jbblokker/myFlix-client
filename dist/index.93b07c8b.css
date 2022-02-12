@@ -95,12 +95,18 @@ div.card {
 }
 
 .card {
-  margin-top: 10px;
   margin-bottom: 10px;
   display: flex;
   align-items: space-between;
   justify-content: space-between;
   flex-wrap: wrap;
+  height: calc(100% - 100px);
+  margin-bottom: 15px;
+}
+
+.card-title {
+  font-size: 20px;
+  color: white;
 }
 
 .movie-img {
@@ -108,10 +114,8 @@ div.card {
   flex-shrink: 0;
   margin-left: auto;
   margin-right: auto;
-}
-
-.movie-card-button {
-  width: 100px;
+  border-radius: 5px;
+  height: 230px;
 }
 body {
   background: #1B1D24 !important;
@@ -142,4 +146,4 @@ body {
 h5 {
   color: white;
 }
-/*# sourceMappingURL=index.ca39449f.css.map */
+/*# sourceMappingURL=index.93b07c8b.css.map */
