@@ -53,7 +53,7 @@ export function RegisterView(props) {
                   <Form.Control type='text' value={username} onChange={e => setUsername(e.target.value)} />
                 </Form.Group>
                 <Form.Group controlId="regPassword">
-                  <Form.Label>Password:</Form.Label>
+                  <Form.Label class="f-label">Password:</Form.Label>
                   <Form.Control type='text' value={password} onChange={e => setPassword(e.target.value)} />
                 </Form.Group>
                 <Button variant="primary" type="submit" onClick={ onSubmit }> SUBMIT </Button>

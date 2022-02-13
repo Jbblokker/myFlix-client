@@ -169,21 +169,21 @@ export class ProfileView extends React.Component {
             <Container className='profile-view'>
 
             
-            <Card className='profile-card' border='info'>
-            <Card.Title className='profile-title'>Your List of Favorites</Card.Title>
-            <div className='favorites-container'>
+            <Card className='profile-card'>
+                <Card.Title className='profile-title'>Your List of Favorites</Card.Title>
+                    <div className='favorites-container'>
                              {favoriteMovies.length > 0 &&
-                        favorites.map(m => (
-                 <Card className="col-sm-14" controlId="cardmovie">
-                                <Card.Body>
+                            favorites.map(m => (
+                            <Card className="col-sm-14" controlId="cardmovie">
+                            <Card.Body>
                             <Card.Title>{m.Title}</Card.Title>
-                    <Card.Img variant="top" src={m.ImagePath} />
-                    <Link to={`/movies/${m._id}`}>
-                        <Button variant="link">About</Button>
-                    </Link>
-                    <Button size='sm' className='profile-button remove-favorite' variant='danger' value={m._id} onClick={(error) => this.removeFavoriteMovie(m._id)}>
-                Remove
-                </Button>
+                            <Card.Img variant="top" src={m.ImagePath} />
+                            <Link to={`/movies/${m._id}`}>
+                                <Button class="profile-about" variant="link">About</Button>
+                            </Link>
+                            <Button size='sm' className='profile-button remove-favorite' variant='danger' value={m._id} onClick={(error) => this.removeFavoriteMovie(m._id)}>
+                                Remove
+                            </Button>
                 </Card.Body>
             </Card>
             ))
@@ -191,50 +191,50 @@ export class ProfileView extends React.Component {
             </div>
             </Card>
 
-            <Card className='update-card' border='info'>
-            <Card.Title>Update Your Profile:</Card.Title>
-            <Card.Body>
-            <Form noValidate validated={validated} className='update-form' onSubmit={(error) => this.handleUpdate(error, this.username, this.password, this.email, this.birthday)}>
-            <Form.Group controlId='formBasicUsername'>
-            <Form.Label className='form-label'>Username</Form.Label>
-            <Form.Control type='text' placeholder='Change Username' onChange={() => this.setUsername(error.target.value)} pattern='[a-zA-Z0-9]{5,}' />
-            <Form.Control.Feedback type='invalid'>Please enter a valid username with at least 5 alphanumeric characters.</Form.Control.Feedback>
-            </Form.Group>
-            <Form.Group controlId='formBasicPassword'>
-            <Form.Label className='form-label'>
-                Password<span className='pw'></span>
-            </Form.Label>
-            <Form.Control type='password' placeholder='Current or New Password' onChange={(error) => this.setPassword(error.target.value)} pattern='.{5,}' />
-            <Form.Control.Feedback type='invalid'>Please enter a valid password with at least 5 characters.</Form.Control.Feedback>
-            </Form.Group>
-            <Form.Group controlId='formBasicEmail'>
-            <Form.Label className='form-label'>Email</Form.Label>
-            <Form.Control type='email' placeholder='Change Email' onChange={(error) => this.setEmail(error.target.value)} />
-            <Form.Control.Feedback type='invalid'>Please enter a valid email address.</Form.Control.Feedback>
-            </Form.Group>
-            <Form.Group controlId='formBasicBirthday'>
-            <Form.Label className='form-label'>Birthday</Form.Label>
-            <Form.Control type='date' placeholder='Change Birthday' onChange={(error) => this.setBirthday(error.target.value)} />
-            <Form.Control.Feedback type='invalid'>Please enter a valid birthday.</Form.Control.Feedback>
-            </Form.Group>
-            <Button className='update-profile-button' type='submit' variant='info'>
-            Update
-            </Button>
-            </Form>
-            </Card.Body>
+            <Card className='update-card'>
+                <Card.Title>Update Your Profile:</Card.Title>
+                <Card.Body>
+                    <Form noValidate validated={validated} className='update-form' onSubmit={(error) => this.handleUpdate(error, this.username, this.password, this.email, this.birthday)}>
+                        <Form.Group controlId='formBasicUsername'>
+                            <Form.Label className='form-label'>Username</Form.Label>
+                            <Form.Control type='text' placeholder='Change Username' onChange={() => this.setUsername(error.target.value)} pattern='[a-zA-Z0-9]{5,}' />
+                            <Form.Control.Feedback type='invalid'>Please enter a valid username with at least 5 alphanumeric characters.</Form.Control.Feedback>
+                        </Form.Group>
+                            <Form.Group controlId='formBasicPassword'>
+                            <Form.Label className='form-label'>
+                            Password<span className='pw'></span>
+                            </Form.Label>
+                            <Form.Control type='password' placeholder='Current or New Password' onChange={(error) => this.setPassword(error.target.value)} pattern='.{5,}' />
+                            <Form.Control.Feedback type='invalid'>Please enter a valid password with at least 5 characters.</Form.Control.Feedback>
+                        </Form.Group>
+                        <Form.Group controlId='formBasicEmail'>
+                            <Form.Label className='form-label'>Email</Form.Label>
+                            <Form.Control type='email' placeholder='Change Email' onChange={(error) => this.setEmail(error.target.value)} />
+                            <Form.Control.Feedback type='invalid'>Please enter a valid email address.</Form.Control.Feedback>
+                        </Form.Group>
+                        <Form.Group controlId='formBasicBirthday'>
+                            <Form.Label className='form-label'>Birthday</Form.Label>
+                            <Form.Control type='date' placeholder='Change Birthday' onChange={(error) => this.setBirthday(error.target.value)} />
+                            <Form.Control.Feedback type='invalid'>Please enter a valid birthday.</Form.Control.Feedback>
+                        </Form.Group>
+                        <Button className='update-profile-button' type='submit' variant='info'>
+                        Update
+                        </Button>
+                    </Form>
+                </Card.Body>
             </Card>
             
 
         <Card className='update-card'>
-        <Card.Title className='profile-title'>Delete Your Profile</Card.Title>
-        <Card.Subtitle className='text-muted'>Once deleted, your account cannot be recovered. </Card.Subtitle>
-        <br></br>
-        <Card.Subtitle className='text-muted'>( It is like a bad first date, no going back. )</Card.Subtitle>
-        <Card.Body>
-        <Button className='button' variant='danger' onClick={(error) => this.handleDeregister(error)}>
-        Click Here
-        </Button>
-        </Card.Body>
+            <Card.Title className='profile-title'>Delete Your Profile</Card.Title>
+            <Card.Subtitle className='text-muted'>Once deleted, your account cannot be recovered. </Card.Subtitle>
+            <br></br>
+            <Card.Subtitle className='text-muted'>( It is like a bad first date, no going back. )</Card.Subtitle>
+            <Card.Body>
+                <Button className='button' variant='danger' onClick={(error) => this.handleDeregister(error)}>
+                    Click Here
+                </Button>
+            </Card.Body>
         </Card>
         </Container>
         );
