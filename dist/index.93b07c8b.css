@@ -1,0 +1,162 @@
+.body {
+  margin-top: 180px;
+}
+
+.login-page {
+  margin: 50px;
+  text-align: center;
+  background-color: darkslategrey;
+  padding-left: 5px;
+  padding-top: 15px;
+  padding-right: 5px;
+  padding-bottom: 5px;
+  border-radius: 8px;
+}
+
+.login-input {
+  padding: 2px 5 px;
+}
+
+.body {
+  color: black;
+}
+div.card {
+  background-color: #1E2127;
+  border: 1px solid #222222;
+  padding: 15px;
+}
+
+.btn-primary {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.movie-description {
+  margin: 10px;
+  margin-bottom: 10px;
+}
+
+.movie-title {
+  margin: 10px;
+}
+
+img {
+  width: 70%;
+}
+div.card {
+  margin-top: 100px;
+  padding-top: 100;
+  color: white;
+  border: 1px solid #222222;
+}
+
+.btn-primary {
+  margin-top: 10px;
+}
+
+.genre-description {
+  margin: 10px;
+}
+
+.genre-view {
+  padding-top: 10px;
+}
+
+h5 {
+  color: white;
+}
+.card-title {
+  color: white;
+}
+
+.profile-card {
+  border: 1px solid #222222;
+}
+
+.profile-about {
+  justify-content: space-between;
+  margin-right: 20px;
+}
+.container {
+  padding-top: -50px;
+  text-align: center;
+}
+
+.director-title {
+  text-align: center;
+}
+
+.btn-primary {
+  margin-top: 10px;
+}
+
+.director-name {
+  margin: 5px;
+}
+
+.director-bio {
+  margin: 5px;
+}
+
+.card-title {
+  padding-top: 10px;
+}
+.body {
+  background-color: #1B1D24;
+}
+
+.card {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: space-between;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  height: calc(100% - 100px);
+  margin-bottom: 15px;
+}
+
+.card-title {
+  font-size: 20px;
+  color: white;
+}
+
+.movie-img {
+  text-align: center;
+  flex-shrink: 0;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
+  height: 230px;
+}
+body {
+  background: #1B1D24 !important;
+}
+.body {
+  padding: 70px;
+  margin-top: 180px;
+  background-color: #1B1D24;
+}
+
+.app-container {
+  background-color: #1B1D24;
+  margin-top: 100px;
+  color: white;
+}
+
+.login-page {
+  columns: xs-3;
+  margin-left: 5;
+}
+
+.app-container {
+  margin-left: 5;
+}
+
+.form-control {
+  columns: xs-3;
+}
+
+h5 {
+  color: white;
+}
+/*# sourceMappingURL=index.93b07c8b.css.map */

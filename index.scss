@@ -1,5 +1,29 @@
-$color: rgb(20, 34, 46);
+.body { 
+    padding: 70px;
+    margin-top: 180px;
+    background-color: #1B1D24;
+    
+}
+.app-container {
+    background-color:#1B1D24;
+    margin-top: 100px;
+    color: white;
+}
 
-.my-flix{
-    color: $color;
+.login-page {
+    columns: xs-3;
+    margin-left: 5;
+
+}
+
+.app-container {
+    margin-left: 5;
+}
+
+.form-control {
+    columns: xs-3;
+}
+
+h5 {
+    color: white;
 }
