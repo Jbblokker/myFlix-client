@@ -58,9 +58,9 @@ export function RegisterView(props) {
                 </Form.Group>
                 <Button variant="primary" type="submit" onClick={ onSubmit }> SUBMIT </Button>
               </Form> 
-          </Container>
+           </Container>
         );
-}
+} 
 
 RegisterView.propTypes = {
   register: PropTypes.shape({
